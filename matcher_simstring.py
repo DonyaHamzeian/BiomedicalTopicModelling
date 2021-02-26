@@ -65,7 +65,10 @@ class SimString_UMLS(object):
 
         st_results = {}
         for cui, sim in self.match_cuis(text):
+            if cui not in self.umls_db.umls_data:
+                continue
             for st in self.umls_db.get_sts(cui):
+
 
                 if st not in st_results:
                     st_results[st] = sim
@@ -82,7 +85,7 @@ def create_umls_ss_db(umls_kb, char_ngram_len=3, n_max_tokens=5):
 
     logging.info('Loading scispacy ...')
     import spacy
-    sci_nlp = spacy.load('en_core_sci_md', disable=['tagger', 'parser', 'ner'])
+    self.sci_nlp = spacy.load('en_core_sci_md', disable=['tagger', 'parser', 'ner'])
 
     simstring_db = DictDatabase(CharacterNgramFeatureExtractor(char_ngram_len))
 
@@ -107,7 +110,7 @@ def create_umls_ss_db(umls_kb, char_ngram_len=3, n_max_tokens=5):
             elif alias.isnumeric():
                 continue
 
-            alias_doc = sci_nlp(alias)  # use same tokenizer as when splitting medmentions
+            alias_doc = self.sci_nlp(alias)  # use same tokenizer as when splitting medmentions
             if len(alias_doc) > n_max_tokens:  # gets too big without restrictions
                 continue
 

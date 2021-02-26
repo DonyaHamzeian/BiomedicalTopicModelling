@@ -5,7 +5,7 @@ import numpy as np
 np.random.seed(42)
 
 import tensorflow as tf
-tf.set_random_seed(42)
+tf.random.set_seed(42)
 
 class SoftMax_CLF():
 

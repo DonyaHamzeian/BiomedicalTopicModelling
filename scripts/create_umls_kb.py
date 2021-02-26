@@ -7,7 +7,7 @@ from collections import Counter
 import sqlite3
 
 from scispacy.umls_semantic_type_tree import construct_umls_tree_from_tsv
-umls_tree = construct_umls_tree_from_tsv('data/umls_semantic_type_tree.tsv')  # change to your location
+umls_tree = construct_umls_tree_from_tsv('../data/umls_semantic_type_tree.tsv')  # change to your location
 
 umls_db_path = '/home/dan/projects/py-umls/databases/umls.db'  # change to your location
 conn = sqlite3.connect(umls_db_path)

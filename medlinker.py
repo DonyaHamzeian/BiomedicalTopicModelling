@@ -280,7 +280,6 @@ if __name__ == '__main__':
 
     from medner import MedNER
     from umls import umls_kb_st21pv as umls_kb
-
     # default models, best configuration from paper
     # to experiment with different configurations, just comment/uncomment components
     
@@ -312,7 +311,8 @@ if __name__ == '__main__':
     medlinker.load_cui_clf(cui_clf_path)
     # medlinker.load_cui_validator(cui_val_path, validator_thresh=0.70)
 
-    s = 'Myeloid derived suppressor cells (MDSC) are immature myeloid cells with immunosuppressive activity.'
+#     s = 'Myeloid derived suppressor cells (MDSC) are immature myeloid cells with immunosuppressive activity.'
+    s = "Coronavirus disease 2019 (COVID-19) is an infectious disease caused by coronavirus-2 (SARS-CoV-2) that causes a severe acute respiratory syndrome, a characteristic hyperinflammatory response, vascular damage, microangiopathy, angiogenesis and widespread thrombosis. Four stages of COVID-19 have been identified: the first stage is characterised by upper respiratory tract infection; the second by the onset of dyspnoea and pneumonia; the third by a worsening clinical scenario dominated by a cytokine storm and the consequent hyperinflammatory state; and the fourth by death or recovery. Currently, no treatment can act specifically against the SARS-CoV-2 infection. Based on the pathological features and different clinical phases of COVID-19, particularly in patients with moderate to severe COVID-19, the classes of drugs used are antiviral agents, inflammation inhibitors/antirheumatic drugs, low molecular weight heparins, plasma, and hyperimmune immunoglobulins. During this emergency period of the COVID-19 outbreak, clinical researchers are using and testing a variety of possible treatments. Based on these premises, this review aims to discuss the most updated pharmacological treatments to effectively act against the SARS-CoV-2 infection and support researchers and clinicians in relation to any current and future developments in curing COVID-19 patients."
     r = medlinker.predict(s)
     print(r)
 
